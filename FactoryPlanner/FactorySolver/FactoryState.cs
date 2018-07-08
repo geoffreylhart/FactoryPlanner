@@ -14,7 +14,6 @@ namespace FactoryPlanner.FactorySolver
         public List<BuildingSource> buildingSources = new List<BuildingSource>();
         public List<BeltSource> beltSources = new List<BeltSource>();
         public List<BuildingConsumer> buildingConsumers = new List<BuildingConsumer>();
-        public SortedSet<Position> blockedPositions = new SortedSet<Position>(); // super inefficient, of course
         private static int[] xOffset = new int[] { 0, 0, -1, 1 };
         private static int[] yOffset = new int[] { 1, -1, 0, 0 };
 
@@ -133,6 +132,10 @@ namespace FactoryPlanner.FactorySolver
                 maxx = Math.Max(maxx, source.x);
                 miny = Math.Min(miny, source.y);
                 maxy = Math.Max(maxy, source.y);
+                minx = Math.Min(minx, source.x + xOffset[source.direction]);
+                maxx = Math.Max(maxx, source.x + xOffset[source.direction]);
+                miny = Math.Min(miny, source.y + yOffset[source.direction]);
+                maxy = Math.Max(maxy, source.y + yOffset[source.direction]);
             }
             foreach (var source in buildingConsumers)
             {
@@ -164,8 +167,6 @@ namespace FactoryPlanner.FactorySolver
                     bool beltExistsAlready = beltSources.Any(x => x.x == newx && x.y == newy);
                     if (beltExistsAlready)
                     {
-                        //bool occupied = blockedPositions.Contains(new Position(newx2, newy2));
-                        //if (occupied) continue;
                         int theBelt = beltSources.FindIndex(x => x.x == newx && x.y == newy);
                         FactoryState nextState = this.Clone();
                         nextState.buildingSources.RemoveAt(i);
@@ -183,7 +184,6 @@ namespace FactoryPlanner.FactorySolver
                                 moddedBelt.itemType2 = buildingSources[i].itemType;
                             }
                             nextState.beltSources[theBelt] = moddedBelt;
-                            //nextState.blockedPositions.Add(new Position(newx2, newy2));
                             nextState.cost++;
                             nextState.Finalize();
                             yield return nextState;
@@ -191,9 +191,6 @@ namespace FactoryPlanner.FactorySolver
                     }
                     else
                     {
-                        //bool occupied = blockedPositions.Contains(new Position(newx, newy));
-                        //occupied |= blockedPositions.Contains(new Position(newx2, newy2));
-                        //if (occupied) continue;
                         for (int k = 0; k < 4; k++) // direction of new belt
                         {
                             FactoryState nextState = this.Clone();
@@ -201,8 +198,6 @@ namespace FactoryPlanner.FactorySolver
                             bool isLeft = bIsLeft[j / 3 * 4 + k];
                             nextState.beltSources.Add(new BeltSource(newx, newy, isLeft ? buildingSources[i].itemType : 0, isLeft ? 0 : buildingSources[i].itemType, k));
                             nextState.cost += 2;
-                            //nextState.blockedPositions.Add(new Position(newx, newy));
-                            //nextState.blockedPositions.Add(new Position(newx2, newy2));
                             nextState.Finalize();
                             yield return nextState;
                         }
@@ -215,8 +210,6 @@ namespace FactoryPlanner.FactorySolver
             {
                 int newx = beltSources[i].x + xOffset[beltSources[i].direction];
                 int newy = beltSources[i].y + yOffset[beltSources[i].direction];
-                //bool occupied = blockedPositions.Contains(new Position(newx, newy));
-                //if (occupied) continue;
                 for (int j = 0; j < 4; j++)
                 {
                     if (new int[] { 1, 0, 3, 2 }[beltSources[i].direction] == j) continue; // let's not go backwards
@@ -232,7 +225,6 @@ namespace FactoryPlanner.FactorySolver
                         // the two belts combine
                         nextState.beltSources.RemoveAt(i);
                         nextState.cost++;
-                        //nextState.blockedPositions.Add(new Position(newx, newy));
                         nextState.Finalize();
                         yield return nextState;
                     }
@@ -240,7 +232,6 @@ namespace FactoryPlanner.FactorySolver
                     {
                         nextState.beltSources[i] = moddedSource;
                         nextState.cost++;
-                        //nextState.blockedPositions.Add(new Position(newx, newy));
                         nextState.Finalize();
                         yield return nextState;
                     }
@@ -276,7 +267,6 @@ namespace FactoryPlanner.FactorySolver
             newState.buildingSources.AddRange(buildingSources);
             newState.beltSources.AddRange(beltSources);
             newState.buildingConsumers.AddRange(buildingConsumers);
-            //foreach (var pos in blockedPositions) newState.blockedPositions.Add(pos);
             return newState;
         }
 
@@ -287,7 +277,6 @@ namespace FactoryPlanner.FactorySolver
             if (buildingSources.Count != that.buildingSources.Count) return false;
             if (beltSources.Count != that.beltSources.Count) return false;
             if (buildingConsumers.Count != that.buildingConsumers.Count) return false;
-            //if (blockedPositions.Count != that.blockedPositions.Count) return false;
             for (int i = 0; i < buildingSources.Count; i++)
             {
                 if (buildingSources[i].x != that.buildingSources[i].x) return false;
@@ -309,7 +298,6 @@ namespace FactoryPlanner.FactorySolver
                 if (buildingConsumers[i].itemType1 != that.buildingConsumers[i].itemType1) return false;
                 if (buildingConsumers[i].itemType2 != that.buildingConsumers[i].itemType2) return false;
             }
-            if (!blockedPositions.SetEquals(that.blockedPositions)) return false;
             return true;
         }
 
@@ -323,7 +311,6 @@ namespace FactoryPlanner.FactorySolver
             hash = 31 * hash + buildingSources.Count;
             hash = 31 * hash + beltSources.Count;
             hash = 31 * hash + buildingConsumers.Count;
-            //hash = 31 * hash + blockedPositions.Count;
             for (int i = 0; i < buildingSources.Count; i++)
             {
                 hash = 31 * hash + buildingSources[i].x;
@@ -345,11 +332,6 @@ namespace FactoryPlanner.FactorySolver
                 hash = 31 * hash + buildingConsumers[i].itemType1;
                 hash = 31 * hash + buildingConsumers[i].itemType2;
             }
-            //foreach (var pos in blockedPositions)
-            //{
-            //    hash = 31 * hash + pos.x;
-            //    hash = 31 * hash + pos.y;
-            //}
             hashCode = hash;
             doneHash = true;
             return hash;
@@ -361,7 +343,6 @@ namespace FactoryPlanner.FactorySolver
             buildingSources.Sort();
             beltSources.Sort();
             buildingConsumers.Sort();
-            //blockedPositions.Sort();
         }
     }
 }

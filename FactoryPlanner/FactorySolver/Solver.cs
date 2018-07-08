@@ -16,22 +16,6 @@ namespace FactoryPlanner.FactorySolver
                 startState.buildingSources.Add(new FactoryState.BuildingSource(i * 3, 0, 1));
                 startState.buildingSources.Add(new FactoryState.BuildingSource(i * 3, 6, 2));
             }
-            for (int i = 0; i < 3 * size; i++)
-            {
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, -1));
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, 0));
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, 1));
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, 5));
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, 6));
-                startState.blockedPositions.Add(new FactoryState.Position(i - 1, 7));
-            }
-            for (int i = -1; i <= 1; i++)
-            {
-                for (int j = -1; j <= 1; j++)
-                {
-                    startState.blockedPositions.Add(new FactoryState.Position(size * 3 + i, 3 + j));
-                }
-            }
             startState.buildingConsumers.Add(new FactoryState.BuildingConsumer(size * 3, 3, 1, 2));
             Console.WriteLine(5 * size - 2); // expectedCost
             return startState;
