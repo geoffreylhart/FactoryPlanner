@@ -35,6 +35,7 @@ namespace FactoryPlanner
             sw.Start();
             // in this special case, blocking results in time going form 1.1s to 3.4s
             // it only reduces states explored from 5063 to 3833
+            // just switching from lilo to lifo went from ~5063 to 1684 nodes explored and cut time by a third
             int answer = Solver.Solve(Solver.MakeBasicText(2));
             double seconds = sw.Elapsed.TotalSeconds;
             answer = answer;
