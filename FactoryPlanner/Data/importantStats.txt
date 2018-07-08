@@ -1,0 +1,28 @@
+﻿Assembler speeds: 0.5, 0.75, 1.25
+Electric Miner Speed: "Mines copper, iron and coal at a rate of 0.525/s and stone at a rate of 0.65/s" Wow!
+Pumpjack min 2 oil/s
+
+Transport Belt Items/s (2 lanes) = 13.33, 26.66, 40
+Inserter Items/s (no bonus) = 0.83, 2.31, 4.62
+Inserter Items/s (capacity 2 bonus) = 1.67, 4.62, 9.23
+Inserter Items/s (capacity 7 bonus) = 2.5, 6.92, 27.69
+Furnace Speeds = 1, 2, 2
+
+
+Steel furnaces actually use half the coal
+All furnaces use 180 kw
+Coal=8 MJ
+so coal is consumed at 0.0225/s (180kw/8000J)
+0.07875 coal/iron in regular furnace
+0.7875 coal/steel in regular furnace (expensive mode)
+half for steel
+
+electric pole range = 7.5
+electric pole supply = 5x5
+
+
+possible metrics to evaluate how good a factory is:
+total area per item/s
+total cost per item/s
+total mw per item/s
+total resources per item (when considering productivity modules or coal/energy)

@@ -1,0 +1,22 @@
+﻿# Assembler Recipes
+AssemblerRecipes
+1 SPRed = 1 CopperPlate, 1 Gear, 5s
+1 SPGreen = 1 Inserter, 1 Belt, 6s
+1 SPBlue = 1 AdvCircuit, 1 EDrill, 1 Engine, 12s
+2 SPBlack = 1 Grenade, 1 GunTurret, 1 APAmmo, 10s
+1 Inserter = 1 Circuit, 1 Gear, 1 Iron, 0.5s
+2 Belt = 1 Gear, 1 Iron, 0.5s
+1 Engine = 1 Gear, 2 Pipe, 1 Steel, 10s
+1 Grenade = 10 Coal, 5 Iron, 8s
+1 GunTurret = 10 Copper, 10 Gear, 20 Iron, 8s
+1 APAmmo = 5 Copper, 1 Ammo, 1 Steel, 3s
+1 Ammo = 4 Iron, 1s
+2 CopperWire = 1 Copper
+# Expensive Recipes
+1 Gear = 4 Iron, 0.5s
+1 AdvCircuit = 8 CopperWire, 2 Circuit, 4 Plastic, 6s
+1 Circuit = 10 CopperWire, 2 Iron, 0.5s
+1 EDrill = 5 Circuit, 10 Gear, 20 Iron, 2s
+1 Pipe = 2 Iron, 0.5s
+FurnaceRecipes
+1 Steel = 10 Iron, 35s
