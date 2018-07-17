@@ -1,0 +1,13 @@
+as I recall all I did was add geosteiner.h and config.h and mostly added things to geosteiner.h until all the libraries were happy
+- but I also changed lp_solve_2.4/patchlevel.h to patchlevel.h since I flattened the directory
+- I cut jgeosteiner entirely
+- I cut fpdebug entirely
+- I cut docgen
+- commented out #error "Unsupported platform!"
+- commented out #error "Unsupported FPU architecture!"
+- ignored warnings 4703, 4146
+- commented out anything that caused channels errors, since its unimportant
+- completed removed leda something
+- renamed a bunch of main to main#
+- commented out a bunch of external symbol issues
+- removed the demos

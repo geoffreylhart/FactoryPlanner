@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -111,7 +112,15 @@ namespace FactoryPlanner.FactorySolver
         }
 
         // estimate remaining cost to complete this factory
+        private int heur = -1;
         internal int Heuristic()
+        {
+            if (heur >= 0) return heur;
+            heur = GeoSteinerHeuristic();
+            return heur;
+        }
+
+        private int OldHeuristic()
         {
             if (buildingSources.Count == 0 && beltSources.Count == 0) return 0;
             // simplest heuristic, width+height
@@ -145,6 +154,32 @@ namespace FactoryPlanner.FactorySolver
                 maxy = Math.Max(maxy, source.y - 2);
             }
             return Math.Max(maxx - minx + 1, 0) + Math.Max(maxy - miny + 1, 0) - 1 - beltSources.Count;
+        }
+
+        [DllImport("GeoSteiner.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int RectilinearSteiner(int nterms, double[] terms);
+        private int GeoSteinerHeuristic()
+        {
+            if (buildingSources.Count == 0 && beltSources.Count == 0) return 0;
+            List<double> terminals = new List<double>();
+            foreach (var source in buildingSources)
+            {
+                terminals.Add(source.x);
+                terminals.Add(source.y);
+            }
+            foreach (var source in beltSources)
+            {
+                terminals.Add(source.x);
+                terminals.Add(source.y);
+                terminals.Add(source.x + xOffset[source.direction]);
+                terminals.Add(source.y + yOffset[source.direction]);
+            }
+            foreach (var source in buildingConsumers)
+            {
+                terminals.Add(source.x);
+                terminals.Add(source.y);
+            }
+            return RectilinearSteiner(terminals.Count / 2, terminals.ToArray()) - 2 * (buildingSources.Count + buildingConsumers.Count);
         }
 
         private static int[] bxOffset = new int[] { -1, 0, 1, 1, 0, -1, -3, -3, -3, 3, 3, 3 };

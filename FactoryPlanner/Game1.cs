@@ -36,6 +36,8 @@ namespace FactoryPlanner
             // in this special case, blocking results in time going form 1.1s to 3.4s
             // it only reduces states explored from 5063 to 3833
             // just switching from lilo to lifo went from ~5063 to 1684 nodes explored and cut time by a third
+            // for test(3): ~58s and 230421(2306445) vs ~199s and 2278(15698)
+            // so the heuristic is called 147x less often, but takes 504x as long to run
             int answer = Solver.Solve(Solver.MakeBasicText(2));
             double seconds = sw.Elapsed.TotalSeconds;
             answer = answer;

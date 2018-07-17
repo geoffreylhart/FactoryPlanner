@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{DF3445A3-8049-4076-9B40-9DBD0E3B40C6}</ProjectGuid>
+    <RootNamespace>GeoSteiner</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4703;4146;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="analyze.c" />
+    <ClCompile Include="analyze_ckpt.c" />
+    <ClCompile Include="bb.c" />
+    <ClCompile Include="bbmain.c" />
+    <ClCompile Include="bbsubs.c" />
+    <ClCompile Include="bmst.c" />
+    <ClCompile Include="bsd.c" />
+    <ClCompile Include="btsearch.c" />
+    <ClCompile Include="channels.c" />
+    <ClCompile Include="ckpt.c" />
+    <ClCompile Include="constrnt.c" />
+    <ClCompile Include="cputime.c" />
+    <ClCompile Include="cra.c" />
+    <ClCompile Include="ctype.c" />
+    <ClCompile Include="cutset.c" />
+    <ClCompile Include="cutsubs.c" />
+    <ClCompile Include="ddsuf.c" />
+    <ClCompile Include="debug.c" />
+    <ClCompile Include="demo1.c" />
+    <ClCompile Include="dsuf.c" />
+    <ClCompile Include="dt.c" />
+    <ClCompile Include="dumpfst.c" />
+    <ClCompile Include="efst.c" />
+    <ClCompile Include="efstmain.c" />
+    <ClCompile Include="egmp.c" />
+    <ClCompile Include="emptyr.c" />
+    <ClCompile Include="emst.c" />
+    <ClCompile Include="environment.c" />
+    <ClCompile Include="esmt.c" />
+    <ClCompile Include="expand.c" />
+    <ClCompile Include="fatal.c" />
+    <ClCompile Include="flow.c" />
+    <ClCompile Include="fputils.c" />
+    <ClCompile Include="fst.c" />
+    <ClCompile Include="fst2graph.c" />
+    <ClCompile Include="fst2graphmain.c" />
+    <ClCompile Include="fstfuncs.c" />
+    <ClCompile Include="genps.c" />
+    <ClCompile Include="greedy.c" />
+    <ClCompile Include="gstaes256.c" />
+    <ClCompile Include="hash.c" />
+    <ClCompile Include="heapsort.c" />
+    <ClCompile Include="heapsortx.c" />
+    <ClCompile Include="heapsorty.c" />
+    <ClCompile Include="hgmst.c" />
+    <ClCompile Include="hgmstmain.c" />
+    <ClCompile Include="hypergraph.c" />
+    <ClCompile Include="incompat.c" />
+    <ClCompile Include="io.c" />
+    <ClCompile Include="lib_points.c" />
+    <ClCompile Include="localcut.c" />
+    <ClCompile Include="lp2mps.c" />
+    <ClCompile Include="lpbinio.c" />
+    <ClCompile Include="lpinit.c" />
+    <ClCompile Include="lpkit.c" />
+    <ClCompile Include="lp_solve.c" />
+    <ClCompile Include="machine.c" />
+    <ClCompile Include="memory.c" />
+    <ClCompile Include="merge_ckpt.c" />
+    <ClCompile Include="metric.c" />
+    <ClCompile Include="mps2lp.c" />
+    <ClCompile Include="mst.c" />
+    <ClCompile Include="nbits.c" />
+    <ClCompile Include="new.c" />
+    <ClCompile Include="osmt.c" />
+    <ClCompile Include="p1read.c" />
+    <ClCompile Include="p1write.c" />
+    <ClCompile Include="parms.c" />
+    <ClCompile Include="plotfst.c" />
+    <ClCompile Include="polltime.c" />
+    <ClCompile Include="presolve.c" />
+    <ClCompile Include="prng_aes256.c" />
+    <ClCompile Include="prng_legacy.c" />
+    <ClCompile Include="prng_new.c" />
+    <ClCompile Include="properties.c" />
+    <ClCompile Include="prunefst.c" />
+    <ClCompile Include="prunefstmain.c" />
+    <ClCompile Include="rand_points.c" />
+    <ClCompile Include="read.c" />
+    <ClCompile Include="readmps.c" />
+    <ClCompile Include="rfst.c" />
+    <ClCompile Include="rfstmain.c" />
+    <ClCompile Include="rmst.c" />
+    <ClCompile Include="rsmt.c" />
+    <ClCompile Include="sec2.c" />
+    <ClCompile Include="sec_comp.c" />
+    <ClCompile Include="sec_heur.c" />
+    <ClCompile Include="sll.c" />
+    <ClCompile Include="smt.c" />
+    <ClCompile Include="smtmain.c" />
+    <ClCompile Include="solve.c" />
+    <ClCompile Include="solver.c" />
+    <ClCompile Include="sortints.c" />
+    <ClCompile Include="triangle.c" />
+    <ClCompile Include="ub.c" />
+    <ClCompile Include="ufst.c" />
+    <ClCompile Include="ufstmain.c" />
+    <ClCompile Include="utils.c" />
+    <ClCompile Include="weak.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="analyze.h" />
+    <ClInclude Include="bb.h" />
+    <ClInclude Include="bbsubs.h" />
+    <ClInclude Include="bitmaskmacros.h" />
+    <ClInclude Include="bmst.h" />
+    <ClInclude Include="bsd.h" />
+    <ClInclude Include="btsearch.h" />
+    <ClInclude Include="channels.h" />
+    <ClInclude Include="ckpt.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="constrnt.h" />
+    <ClInclude Include="costextension.h" />
+    <ClInclude Include="cputime.h" />
+    <ClInclude Include="cra.h" />
+    <ClInclude Include="cutset.h" />
+    <ClInclude Include="ddsuf.h" />
+    <ClInclude Include="debug.h" />
+    <ClInclude Include="dsuf.h" />
+    <ClInclude Include="dt.h" />
+    <ClInclude Include="efst.h" />
+    <ClInclude Include="efuncs.h" />
+    <ClInclude Include="egmp.h" />
+    <ClInclude Include="emptyr.h" />
+    <ClInclude Include="emst.h" />
+    <ClInclude Include="environment.h" />
+    <ClInclude Include="errordefs.h" />
+    <ClInclude Include="expand.h" />
+    <ClInclude Include="fatal.h" />
+    <ClInclude Include="flow.h" />
+    <ClInclude Include="fputils.h" />
+    <ClInclude Include="fstfuncs.h" />
+    <ClInclude Include="genps.h" />
+    <ClInclude Include="geomtypes.h" />
+    <ClInclude Include="geosteiner.h" />
+    <ClInclude Include="greedy.h" />
+    <ClInclude Include="gstaes256.h" />
+    <ClInclude Include="gsttypes.h" />
+    <ClInclude Include="hash.h" />
+    <ClInclude Include="incompat.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="localcut.h" />
+    <ClInclude Include="logic.h" />
+    <ClInclude Include="lpglob.h" />
+    <ClInclude Include="lpinit.h" />
+    <ClInclude Include="lpkit.h" />
+    <ClInclude Include="lpsolver.h" />
+    <ClInclude Include="machine.h" />
+    <ClInclude Include="memory.h" />
+    <ClInclude Include="metric.h" />
+    <ClInclude Include="mst.h" />
+    <ClInclude Include="p1read.h" />
+    <ClInclude Include="parmblk.h" />
+    <ClInclude Include="parmdefs.h" />
+    <ClInclude Include="parms.h" />
+    <ClInclude Include="patchlevel.h" />
+    <ClInclude Include="point.h" />
+    <ClInclude Include="polltime.h" />
+    <ClInclude Include="prepostlude.h" />
+    <ClInclude Include="propdefs.h" />
+    <ClInclude Include="rand_points.h" />
+    <ClInclude Include="read.h" />
+    <ClInclude Include="rfst.h" />
+    <ClInclude Include="rmst.h" />
+    <ClInclude Include="sec2.h" />
+    <ClInclude Include="sec_comp.h" />
+    <ClInclude Include="sec_heur.h" />
+    <ClInclude Include="sll.h" />
+    <ClInclude Include="solver.h" />
+    <ClInclude Include="sortfuncs.h" />
+    <ClInclude Include="steiner.h" />
+    <ClInclude Include="triangle.h" />
+    <ClInclude Include="triangle_rename.h" />
+    <ClInclude Include="ub.h" />
+    <ClInclude Include="ufst.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="weak.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

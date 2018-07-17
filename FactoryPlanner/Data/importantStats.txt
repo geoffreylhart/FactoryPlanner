@@ -20,6 +20,10 @@ half for steel
 electric pole range = 7.5
 electric pole supply = 5x5
 
+A depleted oil pump with basic refining can provide .13 solid fuel/s aka 3.25 MW aka 3.611 steam engines worth or 77.38 solar panels
+Actually, only half-efficiency for boilers...
+A single basic belt can be sustained by 13.33/0.525=25.39 mining drills!
+
 
 possible metrics to evaluate how good a factory is:
 total area per item/s

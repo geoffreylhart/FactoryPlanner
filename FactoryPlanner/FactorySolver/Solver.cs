@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryPlanner.FactorySolver
 {
+    // geosteiner used: http://www.geosteiner.com/
     class Solver
     {
         public static FactoryState MakeBasicText(int size)
@@ -36,6 +37,7 @@ namespace FactoryPlanner.FactorySolver
                 if (priorityQueue.First().Value.Count == 0) priorityQueue.RemoveAt(0);
                 if (head.Heuristic() == 0)
                 {
+                    int totalCount = priorityQueue.Sum(x => x.Value.Count);
                     return head.cost;
                 }
                 foreach (var nextState in head.NextStates())
