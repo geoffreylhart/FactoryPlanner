@@ -1,7 +1,9 @@
 ﻿using FactoryPlanner.FactorySolver;
+using FactoryPlanner.FactorySolver2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Diagnostics;
 
 namespace FactoryPlanner
@@ -13,6 +15,7 @@ namespace FactoryPlanner
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        FactoryState2 factory;
 
         public Game1()
         {
@@ -30,19 +33,7 @@ namespace FactoryPlanner
         {
             // TODO: Add your initialization logic here
 
-            // before we do graphics we need to actually test answers
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            // in this special case, blocking results in time going form 1.1s to 3.4s
-            // it only reduces states explored from 5063 to 3833
-            // just switching from lilo to lifo went from ~5063 to 1684 nodes explored and cut time by a third
-            // for test(3): ~58s and 230421(2306445) vs ~199s and 2278(15698)
-            // so the heuristic is called 147x less often, but takes 504x as long to run
-            int answer = Solver.Solve(Solver.MakeBasicText(2));
-            double seconds = sw.Elapsed.TotalSeconds;
-            answer = answer;
-            // expected answer = 9
-            // end test
+            factory = FactoryState2.TestState1();
 
             base.Initialize();
         }
@@ -92,6 +83,7 @@ namespace FactoryPlanner
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            factory.Draw(GraphicsDevice, spriteBatch);
 
             base.Draw(gameTime);
         }

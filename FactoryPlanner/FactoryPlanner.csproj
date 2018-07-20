@@ -41,6 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FactorySolver2\Assembler.cs" />
+    <Compile Include="FactorySolver2\Entity.cs" />
+    <Compile Include="FactorySolver2\FactoryState2.cs" />
+    <Compile Include="FactorySolver2\ItemRecipe.cs" />
     <Compile Include="FactorySolver\GeoSteiner.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
@@ -56,9 +60,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\example1.png" />
     <Content Include="Data\importantStats.txt" />
     <Content Include="Data\recipes.txt" />
     <Content Include="Icon.ico" />
+    <Content Include="Images\Icons\advanced-circuit.png" />
+    <Content Include="Images\Icons\coal.png" />
+    <Content Include="Images\Icons\copper-cable.png" />
+    <Content Include="Images\Icons\copper-plate.png" />
+    <Content Include="Images\Icons\electric-mining-drill.png" />
+    <Content Include="Images\Icons\electronic-circuit.png" />
+    <Content Include="Images\Icons\engine-unit.png" />
+    <Content Include="Images\Icons\firearm-magazine.png" />
+    <Content Include="Images\Icons\grenade.png" />
+    <Content Include="Images\Icons\gun-turret.png" />
+    <Content Include="Images\Icons\inserter.png" />
+    <Content Include="Images\Icons\iron-gear-wheel.png" />
+    <Content Include="Images\Icons\iron-plate.png" />
+    <Content Include="Images\Icons\military-science-pack.png" />
+    <Content Include="Images\Icons\piercing-rounds-magazine.png" />
+    <Content Include="Images\Icons\pipe.png" />
+    <Content Include="Images\Icons\plastic-bar.png" />
+    <Content Include="Images\Icons\science-pack-1.png" />
+    <Content Include="Images\Icons\science-pack-2.png" />
+    <Content Include="Images\Icons\science-pack-3.png" />
+    <Content Include="Images\Icons\steel-plate.png" />
+    <Content Include="Images\Icons\transport-belt.png" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
