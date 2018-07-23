@@ -20,6 +20,8 @@ namespace FactoryPlanner
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth *= 2;
+            graphics.PreferredBackBufferHeight *= 2;
             Content.RootDirectory = "Content";
         }
 

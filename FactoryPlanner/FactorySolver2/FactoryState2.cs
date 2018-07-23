@@ -68,17 +68,25 @@ namespace FactoryPlanner.FactorySolver2
         }
 
         public static Texture2D myTexture = null;
+        public static Texture2D myTexture2 = null;
         internal void Draw(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateScale(20));
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateScale(0.5f));
             if (myTexture == null)
             {
-                FileStream filestream = new FileStream("..\\..\\..\\..\\Images\\Entities\\assembling-machine-2.png", FileMode.Open);
+                // 214x218 (wxh)
+                // 196x163
+                FileStream filestream = new FileStream("..\\..\\..\\..\\Images\\Entity\\assembling-machine-2\\hr-assembling-machine-2.png", FileMode.Open);
                 myTexture = Texture2D.FromStream(graphicsDevice, filestream);
+                FileStream filestream2 = new FileStream("..\\..\\..\\..\\Images\\Entity\\assembling-machine-2\\hr-assembling-machine-2-shadow.png", FileMode.Open);
+                myTexture2 = Texture2D.FromStream(graphicsDevice, filestream2);
             }
+            // TODO: these offsets are just guesses
             foreach (var entity in entityPlacements)
             {
-                spriteBatch.Draw(myTexture, new Rectangle(entity.x - 1, entity.y - 1, 3, 3), Color.White);
+                // TODO: probably getting stretched wrong
+                spriteBatch.Draw(myTexture2, new Rectangle((entity.x - 1) * 218 / 3 + 40, (entity.y - 1) * 218 / 3 + 30, 196, 163), new Rectangle(0, 0, 196, 163), new Color(Color.White, 0.5f));
+                spriteBatch.Draw(myTexture, new Rectangle((entity.x - 1) * 218 / 3, (entity.y - 1) * 218 / 3, 214, 218), new Rectangle(0, 0, 214, 218), Color.White);
             }
             spriteBatch.End();
         }
