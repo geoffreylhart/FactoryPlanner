@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FactoryPlanner.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -18,7 +19,7 @@ namespace FactoryPlanner.FactorySolver2
         private class EntityPlacement
         {
             public int x, y;
-            Entity entity;
+            public Entity entity;
 
             public EntityPlacement(int x, int y, Entity entity)
             {
@@ -72,21 +73,18 @@ namespace FactoryPlanner.FactorySolver2
         internal void Draw(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateScale(0.5f));
-            if (myTexture == null)
-            {
-                // 214x218 (wxh)
-                // 196x163
-                FileStream filestream = new FileStream("..\\..\\..\\..\\Images\\Entity\\assembling-machine-2\\hr-assembling-machine-2.png", FileMode.Open);
-                myTexture = Texture2D.FromStream(graphicsDevice, filestream);
-                FileStream filestream2 = new FileStream("..\\..\\..\\..\\Images\\Entity\\assembling-machine-2\\hr-assembling-machine-2-shadow.png", FileMode.Open);
-                myTexture2 = Texture2D.FromStream(graphicsDevice, filestream2);
-            }
             // TODO: these offsets are just guesses
+            int pad = 10;
             foreach (var entity in entityPlacements)
             {
                 // TODO: probably getting stretched wrong
-                spriteBatch.Draw(myTexture2, new Rectangle((entity.x - 1) * 218 / 3 + 40, (entity.y - 1) * 218 / 3 + 30, 196, 163), new Rectangle(0, 0, 196, 163), new Color(Color.White, 0.5f));
-                spriteBatch.Draw(myTexture, new Rectangle((entity.x - 1) * 218 / 3, (entity.y - 1) * 218 / 3, 214, 218), new Rectangle(0, 0, 214, 218), Color.White);
+                spriteBatch.Draw(TextureLoader.ASSEMBLING_MACHINE_2_SHADOW, new Rectangle((entity.x - 1) * 218 / 3 + 40, (entity.y - 1) * 218 / 3 + 30, 196, 163), new Rectangle(0, 0, 196, 163), new Color(Color.White, 0.5f));
+                spriteBatch.Draw(TextureLoader.ASSEMBLING_MACHINE_2, new Rectangle((entity.x - 1) * 218 / 3, (entity.y - 1) * 218 / 3, 214, 218), new Rectangle(0, 0, 214, 218), Color.White);
+                if (entity.entity is Assembler)
+                {
+                    spriteBatch.Draw(TextureLoader.GetIcon("blank"), new Rectangle(entity.x * 218 / 3 - pad, entity.y * 218 / 3 - 32 - pad, 64 + pad * 2, 64 + pad * 2), new Rectangle(0, 0, 32, 32), Color.Black);
+                    spriteBatch.Draw(TextureLoader.GetIcon(((Assembler)entity.entity).item.iconName), new Rectangle(entity.x * 218 / 3, entity.y * 218 / 3 - 32, 64, 64), new Rectangle(0, 0, 32, 32), Color.White);
+                }
             }
             spriteBatch.End();
         }

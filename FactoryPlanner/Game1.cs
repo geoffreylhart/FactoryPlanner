@@ -1,5 +1,6 @@
 ﻿using FactoryPlanner.FactorySolver;
 using FactoryPlanner.FactorySolver2;
+using FactoryPlanner.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -36,6 +37,7 @@ namespace FactoryPlanner
             // TODO: Add your initialization logic here
 
             factory = FactoryState2.TestState1();
+            TextureLoader.graphicsDevice = GraphicsDevice;
 
             base.Initialize();
         }

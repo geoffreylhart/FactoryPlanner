@@ -8,7 +8,7 @@ namespace FactoryPlanner.FactorySolver2
 {
     class Assembler : Entity
     {
-        private ItemRecipe item;
+        public ItemRecipe item;
 
         public Assembler(ItemRecipe item)
         {
